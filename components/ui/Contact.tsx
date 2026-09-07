@@ -7,7 +7,8 @@ import { Send, Check, Loader2, AlertTriangle } from "lucide-react";
 // Web3Forms access key — get yours free at https://web3forms.com (it's a public key, safe in client code).
 // Easiest: paste it below. Or set NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY in your env / Vercel.
 const ACCESS_KEY =
-  process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || "YOUR_WEB3FORMS_ACCESS_KEY";
+  process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY ||
+  "c6c654cd-6529-49b8-a14c-dd7f48846f95";
 
 type Status = "idle" | "sending" | "success" | "error";
 const empty = { firstName: "", lastName: "", email: "", message: "" };
