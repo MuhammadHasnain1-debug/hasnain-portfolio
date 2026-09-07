@@ -1,38 +1,70 @@
-# Muhammad Hasnain — Portfolio (Next.js + 3D)
+# Muhammad Hasnain — Developer Portfolio
 
-Interactive dark-theme developer portfolio with a scroll-driven 3D hero.
+Freelance developer building fast, clean interfaces, 3D web experiences, and data tools.
 
-## Stack
-- **Next.js 14** (App Router) + **TypeScript**
-- **Tailwind CSS**
-- **@react-three/fiber** + **@react-three/drei** + **three** — 3D metallic hero
-- **GSAP** + **ScrollTrigger** — scroll-scrubbed timeline & text
-- **Framer Motion** — section reveals & micro-interactions
-- **lucide-react**, **clsx**, **tailwind-merge**
+🔗 **Live:** [hasnaindev.me](https://hasnaindev.me)
 
-## Run it
+![Next.js](https://img.shields.io/badge/Next.js-14-000000?logo=next.js)
+![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind-3-38BDF8?logo=tailwindcss&logoColor=white)
+![Three.js](https://img.shields.io/badge/Three.js-r169-000000?logo=three.js)
+![Deployed on Vercel](https://img.shields.io/badge/Vercel-live-000000?logo=vercel)
+
+## Preview
+
+![Portfolio preview](docs/preview.png)
+
+<!-- Add a screenshot of the live site at docs/preview.png -->
+
+## Features
+
+- **Scroll-reactive 3D hero** — a metallic mesh (React Three Fiber) behind an auto-sliding, letter-flipping headline
+- **Terminal-style preloader** with a live counter
+- **Custom cursor**, magnetic buttons, film-grain texture, and scroll-reveal motion (Framer Motion + GSAP)
+- **Editorial About** section with a live `developer.json` status panel
+- **Tech Stack** grid with real brand-logo icons
+- **Projects** grid — real screenshots with Live Demo + GitHub links
+- **Expertise** cards with 3D mouse-tilt and imagery
+- **Contact form** wired to Web3Forms (delivers straight to inbox)
+- Fully **responsive**, dark theme, `prefers-reduced-motion` aware
+
+## Tech Stack
+
+**Framework:** Next.js 14 (App Router) · TypeScript
+**Styling:** Tailwind CSS
+**3D / Motion:** React Three Fiber · drei · three · GSAP · Framer Motion
+**Icons:** lucide-react · react-icons
+**Forms:** Web3Forms
+**Hosting:** Vercel
+
+## Run locally
+
 ```bash
+git clone https://github.com/MuhammadHasnain1-debug/hasnain-portfolio.git
+cd hasnain-portfolio
 npm install
-npm run dev      # http://localhost:3000
+npm run dev
 ```
 
+Open [http://localhost:3000](http://localhost:3000).
+
 ## Build
+
 ```bash
 npm run build
 npm start
 ```
 
-## Structure
+## Project structure
+
 ```
 app/                 layout, page, globals.css
 components/
-  canvas/            HeroCanvas.tsx   (R3F scene — SSR-safe via dynamic import)
-  ui/                Header, Hero, BioCard, Expertise, Skills, Projects, Contact, Footer
-lib/utils.ts         cn() helper
-public/              hasnain.jpg + projects/*.png
+  canvas/            HeroCanvas.tsx   (R3F scene)
+  ui/                Header, Hero, BioCard, Expertise, Skills, Projects, Contact, Footer, Preloader
+public/              photo, project images, CV
 ```
 
-## Notes
-- The 3D hero falls back to a static gradient on reduced-motion / low-power devices.
-- The contact form is front-end only for now — wire it to Supabase to store submissions.
-- Replace the `#` hrefs (Resume, socials, project Live/Code links) with real URLs.
+---
+
+© 2026 Muhammad Hasnain
