@@ -22,9 +22,24 @@ const fraunces = Fraunces({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://hasnaindev.me"),
   title: "Muhammad Hasnain — Creative Developer",
   description:
     "Muhammad Hasnain — freelance developer building fast, clean interfaces, 3D web experiences and data tools across React, Next.js and Python.",
+  openGraph: {
+    title: "Muhammad Hasnain — Creative Developer",
+    description:
+      "Freelance developer building fast, clean interfaces, 3D web experiences and data tools with React, Next.js and Python.",
+    url: "https://hasnaindev.me",
+    siteName: "Muhammad Hasnain",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Muhammad Hasnain — Creative Developer",
+    description:
+      "Freelance developer building fast, clean interfaces, 3D web experiences and data tools with React, Next.js and Python.",
+  },
 };
 
 export default function RootLayout({
