@@ -1,11 +1,10 @@
 "use client";
 
-import { Github, Linkedin, Twitter, ArrowUp } from "lucide-react";
+import { Github, Linkedin, ArrowUp } from "lucide-react";
 
 const SOCIALS = [
   { icon: Github, href: "https://github.com/MuhammadHasnain1-debug", label: "GitHub" },
-  { icon: Linkedin, href: "#", label: "LinkedIn" },
-  { icon: Twitter, href: "#", label: "X / Twitter" },
+  { icon: Linkedin, href: "https://www.linkedin.com/in/muhammad-hasnain-b0b35139a", label: "LinkedIn" },
 ];
 
 export default function Footer() {

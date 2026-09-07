@@ -66,14 +66,6 @@ export default function BioCard() {
           className="relative mx-auto w-full max-w-[330px]"
         >
           <div
-            aria-hidden
-            className="absolute -inset-3 -z-10 rounded-[1.8rem] opacity-60 blur-md [animation:spin_10s_linear_infinite]"
-            style={{
-              background:
-                "conic-gradient(from 0deg, #5C8CFF, #8B5CF6, #38bdf8, #5C8CFF)",
-            }}
-          />
-          <div
             ref={frameRef}
             className="relative aspect-[4/5] overflow-hidden rounded-2xl border border-white/10"
           >
@@ -83,7 +75,6 @@ export default function BioCard() {
               style={{ y, scale }}
               className="absolute inset-0 h-full w-full object-cover object-[50%_10%] will-change-transform"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-accent/10" />
             <span className="absolute left-3 top-3 rounded-md border border-white/15 bg-ink/50 px-2 py-1 font-mono text-[10px] text-zinc-200 backdrop-blur">
               01 — the dev
             </span>
