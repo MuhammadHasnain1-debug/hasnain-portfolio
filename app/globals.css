@@ -12,6 +12,12 @@ html {
 
 body {
   background-color: #0a0a0c;
+  background-image:
+    radial-gradient(55% 45% at 82% 0%, rgba(92, 140, 255, 0.13), transparent 60%),
+    radial-gradient(50% 45% at 0% 22%, rgba(139, 92, 246, 0.13), transparent 60%),
+    radial-gradient(45% 45% at 100% 62%, rgba(56, 189, 248, 0.10), transparent 60%),
+    radial-gradient(55% 50% at 12% 100%, rgba(244, 114, 182, 0.08), transparent 60%);
+  background-attachment: fixed;
   color: #e7e9ee;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
@@ -48,7 +54,12 @@ body {
     @apply mx-auto w-full max-w-screen-2xl px-6 py-24 md:px-12 md:py-32;
   }
   .eyebrow {
-    @apply font-mono text-xs uppercase tracking-[0.2em] text-accent;
+    @apply font-mono text-xs uppercase tracking-[0.2em];
+    width: fit-content;
+    background: linear-gradient(90deg, #6ea0ff, #a78bfa, #38bdf8);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
   }
 }
 

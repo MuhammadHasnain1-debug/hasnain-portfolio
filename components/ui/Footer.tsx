@@ -38,7 +38,7 @@ export default function Footer() {
 
         {/* giant wordmark */}
         <div
-          className="select-none bg-gradient-to-b from-white/90 via-white/40 to-white/5 bg-clip-text pt-8 font-extrabold uppercase leading-[0.8] tracking-tighter text-transparent"
+          className="select-none bg-gradient-to-r from-[#6EA0FF] via-[#A78BFA] to-[#38BDF8] bg-clip-text pt-8 font-extrabold uppercase leading-[0.8] tracking-tighter text-transparent opacity-90"
           style={{ fontSize: "clamp(3.5rem, 20vw, 18rem)" }}
         >
           Hasnain

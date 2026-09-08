@@ -18,6 +18,16 @@ const PAGES = "https://muhammadhasnain1-debug.github.io";
 
 const PROJECTS: Project[] = [
   {
+    title: "Stacked — Smash Burgers",
+    image: "/projects/stacked-burgers.png",
+    tags: ["Next.js", "TypeScript", "Tailwind"],
+    summary:
+      "An animated smash-burger landing page with a scroll-driven burger anatomy and AI food photography.",
+    live: "",
+    repo: `${GH}/stacked-burgers`,
+    featured: true,
+  },
+  {
     title: "Sales Report Dashboard",
     image: "/projects/sales-dashboard.png",
     tags: ["Python", "SQL", "JavaScript"],
@@ -115,15 +125,17 @@ function Card({ p, i }: { p: Project; i: number }) {
         </span>
 
         {/* arrow chip */}
-        <a
-          href={p.live}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label={`Open ${p.title} live`}
-          className="absolute right-4 top-4 grid h-10 w-10 place-items-center rounded-full bg-accent text-ink opacity-0 transition-all duration-500 group-hover:opacity-100 group-hover:rotate-0 -rotate-45"
-        >
-          <ArrowUpRight className="h-5 w-5" />
-        </a>
+        {p.live && (
+          <a
+            href={p.live}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`Open ${p.title} live`}
+            className="absolute right-4 top-4 grid h-10 w-10 place-items-center rounded-full bg-accent text-ink opacity-0 transition-all duration-500 group-hover:opacity-100 group-hover:rotate-0 -rotate-45"
+          >
+            <ArrowUpRight className="h-5 w-5" />
+          </a>
+        )}
       </div>
 
       <div className="flex flex-col gap-3 p-6">
@@ -141,14 +153,16 @@ function Card({ p, i }: { p: Project; i: number }) {
         <p className="text-sm leading-relaxed text-zinc-400">{p.summary}</p>
 
         <div className="mt-2 flex items-center gap-3">
-          <a
-            href={p.live}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 rounded-full bg-accent px-4 py-2 text-sm font-medium text-ink transition-colors hover:bg-glow"
-          >
-            Live Demo <ArrowUpRight className="h-4 w-4" />
-          </a>
+          {p.live && (
+            <a
+              href={p.live}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 rounded-full bg-accent px-4 py-2 text-sm font-medium text-ink transition-colors hover:bg-glow"
+            >
+              Live Demo <ArrowUpRight className="h-4 w-4" />
+            </a>
+          )}
           <a
             href={p.repo}
             target="_blank"
