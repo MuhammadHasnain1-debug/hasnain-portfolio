@@ -3,82 +3,97 @@
 @tailwind utilities;
 
 :root {
-  color-scheme: dark;
+  color-scheme: light;
 }
 
-html {
-  scroll-behavior: smooth;
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #fff7ef;
 }
 
 body {
-  background-color: #0a0a0c;
-  background-image:
-    radial-gradient(55% 45% at 82% 0%, rgba(92, 140, 255, 0.13), transparent 60%),
-    radial-gradient(50% 45% at 0% 22%, rgba(139, 92, 246, 0.13), transparent 60%),
-    radial-gradient(45% 45% at 100% 62%, rgba(56, 189, 248, 0.10), transparent 60%),
-    radial-gradient(55% 50% at 12% 100%, rgba(244, 114, 182, 0.08), transparent 60%);
-  background-attachment: fixed;
-  color: #e7e9ee;
+  color: #1b1408;
+  font-family: var(--font-kanit), sans-serif;
   -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 ::selection {
-  background: rgba(92, 140, 255, 0.3);
+  background: #f26a21;
   color: #fff;
 }
 
-/* Scrollbar */
 ::-webkit-scrollbar {
   width: 10px;
 }
 ::-webkit-scrollbar-track {
-  background: #0a0a0c;
+  background: #fff7ef;
 }
 ::-webkit-scrollbar-thumb {
-  background: #26262e;
+  background: #f26a21;
   border-radius: 10px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #33333d;
 }
 
 @layer components {
-  .glass {
-    @apply border border-white/10 bg-white/5 backdrop-blur-md;
-  }
-  .glass-strong {
-    @apply border border-white/10 bg-white/[0.07] backdrop-blur-xl;
-  }
-  .section-pad {
-    @apply mx-auto w-full max-w-screen-2xl px-6 py-24 md:px-12 md:py-32;
-  }
-  .eyebrow {
-    @apply font-mono text-xs uppercase tracking-[0.2em];
-    width: fit-content;
-    background: linear-gradient(90deg, #6ea0ff, #a78bfa, #38bdf8);
+  /* huge display heading in white with a soft warm gradient — for orange sections */
+  .head-light {
+    background: linear-gradient(180deg, #ffffff 0%, #ffe4cf 100%);
     -webkit-background-clip: text;
     background-clip: text;
+    -webkit-text-fill-color: transparent;
     color: transparent;
+  }
+  /* heading in orange gradient — for cream/white sections */
+  .head-orange {
+    background: linear-gradient(180deg, #f26a21 0%, #ff8a47 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+  .btn-dark {
+    background: #1b1408;
+    color: #fff;
+    box-shadow: 0 10px 30px -12px rgba(27, 20, 8, 0.6);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .btn-dark:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 40px -12px rgba(27, 20, 8, 0.7);
+  }
+  .btn-orange {
+    background: #f26a21;
+    color: #fff;
+    box-shadow: 0 12px 34px -12px rgba(242, 106, 33, 0.7);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .btn-orange:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 18px 44px -12px rgba(242, 106, 33, 0.85);
   }
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-  .glow-ring {
-    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.06),
-      0 20px 60px -20px rgba(92, 140, 255, 0.35);
-  }
-  .radial-fade {
-    -webkit-mask-image: radial-gradient(circle at 50% 40%, #000 0%, transparent 75%);
-    mask-image: radial-gradient(circle at 50% 40%, #000 0%, transparent 75%);
-  }
+.grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.35;
+  mix-blend-mode: soft-light;
+  border-radius: inherit;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/><feColorMatrix type='matrix' values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 1 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  background-size: 240px 240px;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
+  .animate-marquee-left,
+  .animate-marquee-right {
+    animation: none !important;
   }
 }

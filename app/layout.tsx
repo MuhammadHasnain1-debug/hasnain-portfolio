@@ -1,45 +1,18 @@
 import type { Metadata } from "next";
-import { Inter, JetBrains_Mono, Fraunces } from "next/font/google";
+import { Kanit } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({
+const kanit = Kanit({
   subsets: ["latin"],
-  variable: "--font-inter",
+  weight: ["300", "400", "500", "600", "700", "800", "900"],
+  variable: "--font-kanit",
   display: "swap",
-});
-
-const mono = JetBrains_Mono({
-  subsets: ["latin"],
-  variable: "--font-mono",
-  display: "swap",
-});
-
-const fraunces = Fraunces({
-  subsets: ["latin"],
-  variable: "--font-serif",
-  display: "swap",
-  style: ["normal", "italic"],
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://hasnaindev.me"),
   title: "Muhammad Hasnain — Creative Developer",
   description:
-    "Muhammad Hasnain — freelance developer building fast, clean interfaces, 3D web experiences and data tools across React, Next.js and Python.",
-  openGraph: {
-    title: "Muhammad Hasnain — Creative Developer",
-    description:
-      "Freelance developer building fast, clean interfaces, 3D web experiences and data tools with React, Next.js and Python.",
-    url: "https://hasnaindev.me",
-    siteName: "Muhammad Hasnain",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Muhammad Hasnain — Creative Developer",
-    description:
-      "Freelance developer building fast, clean interfaces, 3D web experiences and data tools with React, Next.js and Python.",
-  },
+    "Muhammad Hasnain — a creative developer crafting striking, fast, unforgettable web experiences with React, Next.js and Python.",
 };
 
 export default function RootLayout({
@@ -48,8 +21,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${mono.variable} ${fraunces.variable}`}>
-      <body className="font-sans antialiased">{children}</body>
+    <html lang="en" className={kanit.variable}>
+      <body className="bg-cream font-kanit text-ink">{children}</body>
     </html>
   );
 }

@@ -1,25 +1,27 @@
-import Header from "@/components/ui/Header";
+import Navbar from "@/components/ui/Navbar";
 import Hero from "@/components/ui/Hero";
-import BioCard from "@/components/ui/BioCard";
+import Marquee from "@/components/ui/Marquee";
+import About from "@/components/ui/About";
 import Expertise from "@/components/ui/Expertise";
-import Skills from "@/components/ui/Skills";
+import TechStack from "@/components/ui/TechStack";
 import Projects from "@/components/ui/Projects";
+import Faq from "@/components/ui/Faq";
 import Contact from "@/components/ui/Contact";
 import Footer from "@/components/ui/Footer";
 
 export default function Home() {
   return (
-    <main className="relative">
-      <Header />
+    <main className="relative overflow-x-clip">
+      <Navbar />
       <Hero />
-      <div className="relative z-10">
-        <BioCard />
-        <Expertise />
-        <Skills />
-        <Projects />
-        <Contact />
-        <Footer />
-      </div>
+      <Marquee />
+      <About />
+      <Expertise />
+      <TechStack />
+      <Projects />
+      <Faq />
+      <Contact />
+      <Footer />
     </main>
   );
 }
