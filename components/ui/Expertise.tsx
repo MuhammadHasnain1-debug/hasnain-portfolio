@@ -70,9 +70,9 @@ function Card({ item, i }: { item: Item; i: number }) {
           src={item.image}
           alt=""
           aria-hidden
-          className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-[0.45] transition-all duration-[900ms] ease-[cubic-bezier(0.2,0.7,0.2,1)] group-hover:scale-110 group-hover:opacity-[0.62]"
+          className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-[0.22] transition-all duration-[900ms] ease-[cubic-bezier(0.2,0.7,0.2,1)] group-hover:scale-110 group-hover:opacity-[0.32]"
         />
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white/60 via-white/30 to-white/15" />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white/65 via-white/52 to-white/40" />
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-orange/[0.06] via-transparent to-orange/[0.06]" />
         {/* cursor-follow glow */}
         <div
