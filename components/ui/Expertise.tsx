@@ -65,14 +65,14 @@ function Card({ item, i }: { item: Item; i: number }) {
         className="group relative h-full min-h-[330px] overflow-hidden rounded-[26px] border border-ink/10 bg-white transition-[transform,border-color,box-shadow] duration-200 ease-out will-change-transform hover:border-orange/60 hover:shadow-[0_44px_100px_-50px_rgba(242,106,33,0.7)]"
         style={{ transformStyle: "preserve-3d" }}
       >
-        {/* faint background image */}
+        {/* background image — visible, with a veil kept strongest up top so the title/body stay readable */}
         <img
           src={item.image}
           alt=""
           aria-hidden
-          className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-[0.08] transition-all duration-[900ms] ease-[cubic-bezier(0.2,0.7,0.2,1)] group-hover:scale-110 group-hover:opacity-20"
+          className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-[0.45] transition-all duration-[900ms] ease-[cubic-bezier(0.2,0.7,0.2,1)] group-hover:scale-110 group-hover:opacity-[0.62]"
         />
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-white via-white/92 to-white/70" />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white/60 via-white/30 to-white/15" />
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-orange/[0.06] via-transparent to-orange/[0.06]" />
         {/* cursor-follow glow */}
         <div
