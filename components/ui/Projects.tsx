@@ -4,8 +4,9 @@ import { motion } from "framer-motion";
 import { Github, ArrowUpRight } from "lucide-react";
 
 const GH = "https://github.com/MuhammadHasnain1-debug";
+const PAGES = "https://muhammadhasnain1-debug.github.io";
 
-type P = { title: string; cat: string; image: string; tags: string[]; summary: string; repo: string };
+type P = { title: string; cat: string; image: string; tags: string[]; summary: string; repo: string; live: string };
 
 const PROJECTS: P[] = [
   {
@@ -15,6 +16,7 @@ const PROJECTS: P[] = [
     tags: ["Next.js", "TypeScript", "Tailwind"],
     summary: "An animated smash-burger landing page with a scroll-driven burger anatomy and AI food photography.",
     repo: `${GH}/stacked-burgers`,
+    live: `${PAGES}/stacked-burgers/`,
   },
   {
     title: "Sales Report Dashboard",
@@ -23,6 +25,7 @@ const PROJECTS: P[] = [
     tags: ["Python", "SQL", "JavaScript"],
     summary: "Ingests messy CSV sales exports, cleans and aggregates them, and renders an interactive dashboard with charts and filters.",
     repo: `${GH}/sales-report-dashboard`,
+    live: `${PAGES}/sales-report-dashboard/`,
   },
   {
     title: "APU CGPA Calculator",
@@ -31,6 +34,7 @@ const PROJECTS: P[] = [
     tags: ["Next.js", "React", "TypeScript"],
     summary: "A full CGPA calculator and target planner built in Next.js — grade input through to goal planning.",
     repo: `${GH}/apu-cgpa-calculator`,
+    live: `${PAGES}/apu-cgpa-calculator/`,
   },
   {
     title: "Namewright",
@@ -39,6 +43,7 @@ const PROJECTS: P[] = [
     tags: ["JavaScript", "Gemini API"],
     summary: "An AI name generator wired to a real Gemini backend, returning brandable names on demand.",
     repo: `${GH}/namewright`,
+    live: `${PAGES}/namewright/`,
   },
   {
     title: "The Gilded Fox",
@@ -47,6 +52,7 @@ const PROJECTS: P[] = [
     tags: ["HTML", "CSS", "JS"],
     summary: "A moody, cinematic cocktail-bar site with full-bleed photography and smooth scroll.",
     repo: `${GH}/the-gilded-fox`,
+    live: `${PAGES}/the-gilded-fox/`,
   },
   {
     title: "Ember & Oak",
@@ -55,6 +61,7 @@ const PROJECTS: P[] = [
     tags: ["HTML", "CSS", "JS"],
     summary: "A warm, atmospheric brand site for a candle and fragrance label.",
     repo: `${GH}/ember-and-oak`,
+    live: `${PAGES}/ember-and-oak/`,
   },
   {
     title: "Team Performance Scorecard",
@@ -63,6 +70,7 @@ const PROJECTS: P[] = [
     tags: ["Apps Script", "Sheets"],
     summary: "An automated Google Sheets scorecard that tracks and ranks team KPIs.",
     repo: `${GH}/team-performance-scorecard`,
+    live: `${PAGES}/team-performance-scorecard/`,
   },
   {
     title: "Brew Haven",
@@ -71,6 +79,7 @@ const PROJECTS: P[] = [
     tags: ["HTML", "CSS", "JS"],
     summary: "An animated coffee-shop landing page full of playful scroll effects and micro-interactions.",
     repo: `${GH}/brew-haven`,
+    live: `${PAGES}/brew-haven/`,
   },
 ];
 
@@ -111,7 +120,17 @@ function Card({ p, i }: { p: P; i: number }) {
         </div>
         <h3 className="text-xl font-semibold tracking-tight text-ink">{p.title}</h3>
         <p className="text-sm leading-relaxed text-ink-soft">{p.summary}</p>
-        <div className="mt-auto pt-3">
+        <div className="mt-auto flex flex-wrap items-center gap-2.5 pt-3">
+          {p.live && (
+            <a
+              href={p.live}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-orange inline-flex items-center gap-1.5 rounded-full px-4 py-2 text-sm font-medium"
+            >
+              Live Demo <ArrowUpRight className="h-4 w-4" />
+            </a>
+          )}
           <a
             href={p.repo}
             target="_blank"
