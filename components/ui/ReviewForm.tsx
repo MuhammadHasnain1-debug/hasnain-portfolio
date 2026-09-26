@@ -4,10 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Send, Check, Loader2, AlertTriangle } from "lucide-react";
 import { StarInput } from "@/components/ui/StarRating";
-
-const ACCESS_KEY =
-  process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY ||
-  "c6c654cd-6529-49b8-a14c-dd7f48846f95";
+import { submitReview } from "@/lib/supabase";
 
 type Status = "idle" | "sending" | "success" | "error";
 const empty = { name: "", role: "", message: "" };
@@ -31,26 +28,10 @@ export default function ReviewForm() {
     setErr("");
     setStatus("sending");
     try {
-      const res = await fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({
-          access_key: ACCESS_KEY,
-          subject: `New testimonial — ${rating}/5 from ${form.name}`,
-          from_name: "Portfolio reviews",
-          botcheck: "",
-          rating: `${rating} / 5 ⭐`,
-          name: form.name,
-          role: form.role,
-          message: form.message,
-        }),
-      });
-      const data = await res.json();
-      if (data.success) {
-        setStatus("success");
-        setForm(empty);
-        setRating(0);
-      } else setStatus("error");
+      await submitReview({ name: form.name, role: form.role, rating, message: form.message });
+      setStatus("success");
+      setForm(empty);
+      setRating(0);
     } catch {
       setStatus("error");
     }

@@ -1,15 +1,21 @@
-"use client";
-
 import Link from "next/link";
 import { ArrowUpRight, PenLine } from "lucide-react";
 import FadeIn from "@/components/FadeIn";
 import { Stars } from "@/components/ui/StarRating";
 import TestimonialCard from "@/components/ui/TestimonialCard";
-import { testimonials, averageRating } from "@/lib/testimonials";
+import { testimonials, averageRating, type Testimonial } from "@/lib/testimonials";
+import { fetchApprovedReviews } from "@/lib/supabase";
 
-export default function Testimonials() {
-  const avg = averageRating(testimonials);
-  const featured = testimonials[0];
+export default async function Testimonials() {
+  const live: Testimonial[] = (await fetchApprovedReviews()).map((r) => ({
+    name: r.name,
+    role: r.role || "Verified review",
+    rating: r.rating,
+    quote: r.message,
+  }));
+  const all = [...testimonials, ...live];
+  const avg = averageRating(all);
+  const featured = all[0];
 
   return (
     <section id="reviews" className="relative overflow-hidden bg-cream px-5 py-24 sm:px-8 md:px-10 md:py-32">
@@ -27,7 +33,7 @@ export default function Testimonials() {
             <div className="text-right">
               <div className="head-orange text-4xl font-black leading-none">{avg.toFixed(1)}</div>
               <div className="mt-1 font-mono text-[10px] uppercase tracking-widest text-ink-soft">
-                {testimonials.length} review{testimonials.length > 1 ? "s" : ""}
+                {all.length} review{all.length > 1 ? "s" : ""}
               </div>
             </div>
             <Stars value={avg} size={22} />

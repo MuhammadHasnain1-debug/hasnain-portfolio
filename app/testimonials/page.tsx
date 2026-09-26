@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
-import { testimonials, averageRating } from "@/lib/testimonials";
+import { testimonials, averageRating, type Testimonial } from "@/lib/testimonials";
+import { fetchApprovedReviews } from "@/lib/supabase";
 import { Stars } from "@/components/ui/StarRating";
 import TestimonialCard from "@/components/ui/TestimonialCard";
 import ReviewForm from "@/components/ui/ReviewForm";
@@ -12,9 +13,18 @@ export const metadata: Metadata = {
     "What clients say about working with Muhammad Hasnain — and a place to leave your own review.",
 };
 
-export default function TestimonialsPage() {
-  const avg = averageRating(testimonials);
-  const [featured, ...rest] = testimonials;
+export const dynamic = "force-dynamic";
+
+export default async function TestimonialsPage() {
+  const live: Testimonial[] = (await fetchApprovedReviews()).map((r) => ({
+    name: r.name,
+    role: r.role || "Verified review",
+    rating: r.rating,
+    quote: r.message,
+  }));
+  const all = [...testimonials, ...live];
+  const avg = averageRating(all);
+  const [featured, ...rest] = all;
 
   return (
     <main className="relative min-h-screen bg-cream">
@@ -40,7 +50,7 @@ export default function TestimonialsPage() {
                 <div className="text-right">
                   <div className="head-orange text-5xl font-black leading-none">{avg.toFixed(1)}</div>
                   <div className="mt-1 font-mono text-[10px] uppercase tracking-widest text-ink-soft">
-                    {testimonials.length} review{testimonials.length > 1 ? "s" : ""}
+                    {all.length} review{all.length > 1 ? "s" : ""}
                   </div>
                 </div>
                 <Stars value={avg} size={26} />
