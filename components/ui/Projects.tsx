@@ -1,149 +1,11 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Github, ArrowUpRight } from "lucide-react";
+import Link from "next/link";
+import { ArrowUpRight, Github } from "lucide-react";
+import { projects, GITHUB } from "@/lib/projects";
+import ProjectCard from "@/components/ui/ProjectCard";
 
-const GH = "https://github.com/MuhammadHasnain1-debug";
-const PAGES = "https://muhammadhasnain1-debug.github.io";
-
-type P = { title: string; cat: string; image: string; tags: string[]; summary: string; repo: string; live: string };
-
-const PROJECTS: P[] = [
-  {
-    title: "Stacked — Smash Burgers",
-    cat: "Personal",
-    image: "/projects/stacked-burgers.png",
-    tags: ["Next.js", "TypeScript", "Tailwind"],
-    summary: "An animated smash-burger landing page with a scroll-driven burger anatomy and AI food photography.",
-    repo: `${GH}/stacked-burgers`,
-    live: `${PAGES}/stacked-burgers/`,
-  },
-  {
-    title: "Sales Report Dashboard",
-    cat: "Client",
-    image: "/projects/sales-dashboard.png",
-    tags: ["Python", "SQL", "JavaScript"],
-    summary: "Ingests messy CSV sales exports, cleans and aggregates them, and renders an interactive dashboard with charts and filters.",
-    repo: `${GH}/sales-report-dashboard`,
-    live: `${PAGES}/sales-report-dashboard/`,
-  },
-  {
-    title: "APU CGPA Calculator",
-    cat: "Web App",
-    image: "/projects/apu-cgpa.png",
-    tags: ["Next.js", "React", "TypeScript"],
-    summary: "A full CGPA calculator and target planner built in Next.js — grade input through to goal planning.",
-    repo: `${GH}/apu-cgpa-calculator`,
-    live: `${PAGES}/apu-cgpa-calculator/`,
-  },
-  {
-    title: "Namewright",
-    cat: "AI Tool",
-    image: "/projects/namewright.png",
-    tags: ["JavaScript", "Gemini API"],
-    summary: "An AI name generator wired to a real Gemini backend, returning brandable names on demand.",
-    repo: `${GH}/namewright`,
-    live: `${PAGES}/namewright/`,
-  },
-  {
-    title: "The Gilded Fox",
-    cat: "Client",
-    image: "/projects/gilded-fox.png",
-    tags: ["HTML", "CSS", "JS"],
-    summary: "A moody, cinematic cocktail-bar site with full-bleed photography and smooth scroll.",
-    repo: `${GH}/the-gilded-fox`,
-    live: `${PAGES}/the-gilded-fox/`,
-  },
-  {
-    title: "Ember & Oak",
-    cat: "Client",
-    image: "/projects/ember-oak.png",
-    tags: ["HTML", "CSS", "JS"],
-    summary: "A warm, atmospheric brand site for a candle and fragrance label.",
-    repo: `${GH}/ember-and-oak`,
-    live: `${PAGES}/ember-and-oak/`,
-  },
-  {
-    title: "Team Performance Scorecard",
-    cat: "Automation",
-    image: "/projects/team-scorecard.png",
-    tags: ["Apps Script", "Sheets"],
-    summary: "An automated Google Sheets scorecard that tracks and ranks team KPIs.",
-    repo: `${GH}/team-performance-scorecard`,
-    live: `${PAGES}/team-performance-scorecard/`,
-  },
-  {
-    title: "Brew Haven",
-    cat: "Client",
-    image: "/projects/brew-haven.png",
-    tags: ["HTML", "CSS", "JS"],
-    summary: "An animated coffee-shop landing page full of playful scroll effects and micro-interactions.",
-    repo: `${GH}/brew-haven`,
-    live: `${PAGES}/brew-haven/`,
-  },
-];
-
-function Card({ p, i }: { p: P; i: number }) {
-  const index = String(i + 1).padStart(2, "0");
-  return (
-    <motion.article
-      initial={{ opacity: 0, y: 44 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-60px" }}
-      transition={{ duration: 0.55, delay: (i % 3) * 0.08, ease: [0.2, 0.7, 0.2, 1] }}
-      whileHover={{ y: -8 }}
-      className="group relative flex flex-col overflow-hidden rounded-[28px] border border-ink/10 bg-white transition-shadow duration-500 hover:shadow-[0_44px_100px_-45px_rgba(242,106,33,0.45)]"
-    >
-      <div className="relative aspect-[16/10] overflow-hidden">
-        <img
-          src={p.image}
-          alt={`${p.title} preview`}
-          loading="lazy"
-          className="h-full w-full object-cover object-top transition-transform duration-[900ms] ease-[cubic-bezier(0.2,0.7,0.2,1)] group-hover:scale-[1.08]"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-white/70 via-transparent to-transparent" />
-        {/* sheen sweep */}
-        <span className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/25 to-transparent transition-transform duration-[1100ms] group-hover:translate-x-full" />
-        <span className="absolute left-4 top-3 font-mono text-sm text-white drop-shadow">{index}</span>
-        <span className="absolute right-4 top-3 rounded-full bg-ink/55 px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-white backdrop-blur">
-          {p.cat}
-        </span>
-      </div>
-
-      <div className="flex flex-1 flex-col gap-3 p-6">
-        <div className="flex flex-wrap gap-2">
-          {p.tags.map((t) => (
-            <span key={t} className="rounded-full border border-ink/10 bg-cream px-2.5 py-1 font-mono text-[11px] text-ink-soft">
-              {t}
-            </span>
-          ))}
-        </div>
-        <h3 className="text-xl font-semibold tracking-tight text-ink">{p.title}</h3>
-        <p className="text-sm leading-relaxed text-ink-soft">{p.summary}</p>
-        <div className="mt-auto flex flex-wrap items-center gap-2.5 pt-3">
-          {p.live && (
-            <a
-              href={p.live}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-orange inline-flex items-center gap-1.5 rounded-full px-4 py-2 text-sm font-medium"
-            >
-              Live Demo <ArrowUpRight className="h-4 w-4" />
-            </a>
-          )}
-          <a
-            href={p.repo}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 rounded-full border border-ink/20 px-4 py-2 text-sm text-ink transition-colors hover:border-orange hover:text-orange"
-          >
-            <Github className="h-4 w-4" /> View Code
-          </a>
-        </div>
-      </div>
-    </motion.article>
-  );
-}
+const FEATURED = projects.slice(0, 6);
 
 export default function Projects() {
   return (
@@ -157,7 +19,7 @@ export default function Projects() {
             </h2>
           </div>
           <a
-            href={GH}
+            href={GITHUB}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-1.5 font-mono text-sm uppercase tracking-wider text-ink-soft transition-colors hover:text-orange"
@@ -167,9 +29,19 @@ export default function Projects() {
         </div>
 
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {PROJECTS.map((p, i) => (
-            <Card key={p.title} p={p} i={i} />
+          {FEATURED.map((p, i) => (
+            <ProjectCard key={p.slug} p={p} i={i} />
           ))}
+        </div>
+
+        <div className="mt-12 flex justify-center">
+          <Link
+            href="/projects"
+            className="group inline-flex items-center gap-2 rounded-full bg-ink px-7 py-3.5 text-sm font-medium uppercase tracking-widest text-white transition-transform hover:-translate-y-0.5"
+          >
+            View all {projects.length} projects
+            <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+          </Link>
         </div>
       </div>
     </section>
