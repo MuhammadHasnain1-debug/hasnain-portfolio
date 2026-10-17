@@ -18,6 +18,18 @@ const PAGES = "https://muhammadhasnain1-debug.github.io";
 
 export const projects: Project[] = [
   {
+    slug: "khana-pina",
+    title: "Khana Pina",
+    cat: "Startup · Live",
+    image: "/projects/khana-pina.png",
+    tags: ["Next.js", "TypeScript", "Supabase", "Tailwind"],
+    summary:
+      "My own food-ordering startup for Tando Allahyar — a foodpanda-style site where customers browse local restaurants and send their order straight to the restaurant's WhatsApp. Multiple restaurants, live menus from a database, an admin dashboard and weekly billing. Live at khanapina.pk.",
+    live: "https://khanapina.pk",
+    repo: "",
+    private: true,
+  },
+  {
     slug: "skillzone",
     title: "SkillZone Computer Academy",
     cat: "Client · Paid",
